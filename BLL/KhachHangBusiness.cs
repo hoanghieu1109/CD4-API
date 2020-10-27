@@ -7,14 +7,14 @@ using System.Text;
 
 namespace BLL
 {
-    public partial class CustomerBusiness : ICustomerBusiness
+    public partial class KhachHangBusiness : IKhachHangBusiness
     {
-        private ICustomerRepository _res;
-        public CustomerBusiness(ICustomerRepository res)
+        private IKhachHangRepository _res;
+        public KhachHangBusiness(IKhachHangRepository res)
         {
             _res = res;
         }
-        public bool Create(CustomerModel model)
+        public bool Create(KhachHangModel model)
         {
             return _res.Create(model);
         }

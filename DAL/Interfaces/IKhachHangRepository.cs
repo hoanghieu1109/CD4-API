@@ -5,8 +5,8 @@ using System.Text;
 
 namespace DAL
 {
-    public partial interface IItemGroupRepository
+    public partial interface IKhachHangRepository
     {
-        List<ItemGroupModel> GetData();
+        bool Create(KhachHangModel model);
     }
 }

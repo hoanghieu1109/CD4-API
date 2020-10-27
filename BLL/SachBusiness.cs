@@ -14,14 +14,27 @@ namespace BLL
         {
             _res = SachGroupRes;
         }
-        //public bool Create(SachModel model)
-        //{
-        //    return _res.Create(model);
-        //}
-        //public SachModel GetDatabyID(string id)
-        //{
-        //    return _res.GetDatabyID(id);
-        //}
+        public bool Create(SachModel model)
+        {
+            return _res.Create(model);
+        }
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(SachModel model)
+        {
+            return _res.Update(model);
+        }
+        public SachModel GetDatabyID(string id)
+        {
+            var kq= _res.GetDatabyID(id);
+            kq.NXB = _res.GetNXBBYSACH(id);
+            kq.CD = _res.GetCDBYSACH(id);
+            return kq;
+        }
+
+       
         public List<SachModel> GetDataAll()
         {
             return _res.GetDataAll();
@@ -29,6 +42,10 @@ namespace BLL
         public List<SachModel> phantrang(int pageIndex, int pageSize, out long total)
         {
             return _res.phantrang(pageIndex, pageSize, out total);
+        }
+        public List<SachModel> GetDataByChuDe(string id)
+        {
+            return _res.GetDataByChuDe(id);
         }
     }
 

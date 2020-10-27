@@ -12,19 +12,19 @@ namespace API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomerController : ControllerBase
+    public class KhachHangController : ControllerBase
     {
-        private ICustomerBusiness _customerBusiness;
-        public CustomerController(ICustomerBusiness customerBusiness)
+        private IKhachHangBusiness _khachhangBusiness;
+        public KhachHangController(IKhachHangBusiness khachhangBusiness)
         {
-            _customerBusiness = customerBusiness;
+            _khachhangBusiness = khachhangBusiness;
         }
          
         [Route("create-item")]
         [HttpPost]
-        public CustomerModel CreateItem([FromBody] CustomerModel model)
+        public KhachHangModel CreateItem([FromBody] KhachHangModel model)
         {
-            _customerBusiness.Create(model);
+            _khachhangBusiness.Create(model);
             return model;
         } 
     }

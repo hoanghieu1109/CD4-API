@@ -24,6 +24,8 @@ namespace DAL
                 "@ma_hoa_don", model.ma_hoa_don,
                 "@ho_ten", model.ho_ten,
                 "@dia_chi", model.dia_chi,
+                "@sdt", model.sdt,
+                "@total", model.total,
                 "@listjson_chitiet", model.listjson_chitiet != null ? MessageConvert.SerializeObject(model.listjson_chitiet) : null);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {

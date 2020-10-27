@@ -5,8 +5,8 @@ namespace Model
 {
     public class ChuDeModel
     {
-        public string MaChuDe { get; set; }
-        public string TenChuDe { get; set; }
+        public string machude { get; set; }
+        public string tenchude { get; set; }
         
        
     }

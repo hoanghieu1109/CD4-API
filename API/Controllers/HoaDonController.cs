@@ -19,7 +19,7 @@ namespace API.Controllers
         {
             _hoaDonBusiness = hoaDonBusiness;
         }
-         
+
         [Route("create-hoa-don")]
         [HttpPost]
         public HoaDonModel CreateItem([FromBody] HoaDonModel model)
@@ -27,11 +27,11 @@ namespace API.Controllers
             model.ma_hoa_don = Guid.NewGuid().ToString();
             if (model.listjson_chitiet != null)
             {
-                foreach(var item in model.listjson_chitiet)
+                foreach (var item in model.listjson_chitiet)
                     item.ma_chi_tiet = Guid.NewGuid().ToString();
             }
             _hoaDonBusiness.Create(model);
             return model;
-        } 
+        }
     }
 }

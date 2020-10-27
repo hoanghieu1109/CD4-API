@@ -7,22 +7,27 @@ using System.Text;
 
 namespace DAL
 {
-    public partial class CustomerRepository : ICustomerRepository
+    public partial class KhachHangRepository : IKhachHangRepository
     {
         private IDatabaseHelper _dbHelper;
-        public CustomerRepository(IDatabaseHelper dbHelper)
+        public KhachHangRepository(IDatabaseHelper dbHelper)
         {
             _dbHelper = dbHelper;
         }
 
-        public bool Create(CustomerModel model)
+        public bool Create(KhachHangModel model)
         {
             string msgError = "";
             try
             {
-                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_customer_create",
-                "@customer_email", model.customer_email,
-                "@customer_password", model.customer_password);
+                var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_khachhang_create",
+                "@MaKH", model.MaKH,
+                "@HoTen", model.HoTen,
+                "@TaiKhoan",model.TaiKhoan,
+                "@MatKhau", model.MatKhau,
+                "@Email", model.Email,
+                "@DiaChi", model.DiaChi,
+                "@DienThoai", model.DienThoai);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);
