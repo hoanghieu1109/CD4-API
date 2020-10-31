@@ -10,9 +10,9 @@ namespace DAL
         bool Create(SachModel model);
         bool Update(SachModel model);
         bool Delete(string id);
-        SachModel GetDatabyID(string id);
-        NhaXuatBanModel GetNXBBYSACH(string id);
-        ChuDeModel GetCDBYSACH(string id);
+        SachModel GetDatabyID(int id);
+        NhaXuatBanModel GetNXBBYSACH(int id);
+        ChuDeModel GetCDBYSACH(int id);
         List<SachModel> GetDataAll();
         List<SachModel> GetDataByChuDe(string MaChuDe);
         List<SachModel> phantrang(int pageIndex, int pageSize, out long total);

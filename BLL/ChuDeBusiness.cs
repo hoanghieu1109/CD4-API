@@ -14,22 +14,30 @@ namespace BLL
         {
             _res = ChuDeGroupRes;
         }
-        //public bool Create(ChuDeModel model)
-        //{
-        //    return _res.Create(model);
-        //}
-        //public ChuDeModel GetDatabyID(string id)
-        //{
-        //    return _res.GetDatabyID(id);
-        //}
         public List<ChuDeModel> GetDataAll()
         {
             return _res.GetDataAll();
         }
-        //public List<ChuDeModel> Search(int pageIndex, int pageSize, out long total, string ChuDe_group_id)
-        //{
-        //    return _res.Search(pageIndex, pageSize, out total, ChuDe_group_id);
-        //}
+        public ChuDeModel GetDatabyID(string id)
+        {
+            return _res.GetDatabyID(id);
+        }
+        public bool Create(ChuDeModel model)
+        {
+            return _res.Create(model);
+        }
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(ChuDeModel model)
+        {
+            return _res.Update(model);
+        }
+        public List<ChuDeModel> phantrang(int pageIndex, int pageSize, out long total)
+        {
+            return _res.phantrang(pageIndex, pageSize, out total);
+        }
     }
 
 }

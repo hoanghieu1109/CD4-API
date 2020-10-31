@@ -7,9 +7,11 @@ namespace DAL
 {
     public partial interface IChuDeRepository
     {
-        //bool Create(ItemModel model);
-        //ItemModel GetDatabyID(string id);
+        bool Create(ChuDeModel model);
+        bool Update(ChuDeModel model);
+        bool Delete(string id);
+        ChuDeModel GetDatabyID(string id);
         List<ChuDeModel> GetDataAll();
-        //List<ItemModel> Search(int pageIndex, int pageSize, out long total, string item_group_id);
+        List<ChuDeModel> phantrang(int pageIndex, int pageSize, out long total);
     }
 }

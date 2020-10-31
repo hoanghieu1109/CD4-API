@@ -7,7 +7,7 @@ namespace Model
     {
         public string ma_chi_tiet { get; set; }
         public string ma_hoa_don { get; set; }
-        public string MaSach { get; set; }
+        public int MaSach { get; set; }
         public int so_luong { get; set; }
 
     }

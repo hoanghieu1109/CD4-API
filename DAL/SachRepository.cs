@@ -21,7 +21,7 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_sach_create",
-                "@masach", model.masach,
+                //"@masach", model.masach,
                 "@tensach", model.tensach,
                 "@giaban", model.giaban,
                 "@mota", model.mota,
@@ -86,7 +86,7 @@ namespace DAL
             }
         }
 
-        public SachModel GetDatabyID(string id)
+        public SachModel GetDatabyID(int id)
         {
             string msgError = "";
             try
@@ -102,7 +102,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public NhaXuatBanModel GetNXBBYSACH(string id)
+        public NhaXuatBanModel GetNXBBYSACH(int id)
         {
             string msgError = "";
             try
@@ -118,7 +118,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public ChuDeModel GetCDBYSACH(string id)
+        public ChuDeModel GetCDBYSACH(int id)
         {
             string msgError = "";
             try
@@ -168,13 +168,13 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<SachModel> GetDataByChuDe(string MaChuDe)
+        public List<SachModel> GetDataByChuDe(string machude)
         {
             string msgError = "";
             try
             {
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_by_chude",
-                     "@MaChuDe", MaChuDe);
+                     "@machude", machude);
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 return dt.ConvertTo<SachModel>().ToList();

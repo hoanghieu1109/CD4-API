@@ -17,11 +17,13 @@ namespace API.Controllers
 
     public class SachController : ControllerBase
     {
-        private string _path;
         private ISachBusiness _SachBusiness;
+        private string _path;
+        
         public SachController(ISachBusiness SachBusiness)
         {
             _SachBusiness = SachBusiness;
+           
         }
 
         [Route("create-sach")]
@@ -33,12 +35,12 @@ namespace API.Controllers
                 var arrData = model.anhbia.Split(';');
                 if (arrData.Length == 3)
                 {
-                    var savePath = $@"assets/images/{arrData[0]}";
+                    var savePath = $@"{arrData[0]}";
                     model.anhbia = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
             }
-            model.masach = Guid.NewGuid().ToString();
+            
             _SachBusiness.Create(model);
             return model;
         }
@@ -74,10 +76,10 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult DeleteSach([FromBody] Dictionary<string, object> formData)
         {
-            string MaSach = "";
-            if (formData.Keys.Contains("MaSach") && !string.IsNullOrEmpty(Convert.ToString(formData["MaSach"])))
-            { MaSach = Convert.ToString(formData["MaSach"]); }
-            _SachBusiness.Delete(MaSach);
+            string masach = "";
+            if (formData.Keys.Contains("masach") && !string.IsNullOrEmpty(Convert.ToString(formData["masach"])))
+            { masach = Convert.ToString(formData["masach"]); }
+            _SachBusiness.Delete(masach);
             return Ok();
         }
 
@@ -90,7 +92,7 @@ namespace API.Controllers
                 var arrData = model.anhbia.Split(';');
                 if (arrData.Length == 3)
                 {
-                    var savePath = $@"assets/images/{arrData[0]}";
+                    var savePath = $@"{arrData[0]}";
                     model.anhbia = $"{savePath}";
                     SaveFileFromBase64String(savePath, arrData[2]);
                 }
@@ -101,7 +103,7 @@ namespace API.Controllers
 
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public SachModel GetDatabyID(string id)
+        public SachModel GetDatabyID(int id)
         {
             return _SachBusiness.GetDatabyID(id);
         }

@@ -26,7 +26,7 @@ namespace BLL
         {
             return _res.Update(model);
         }
-        public SachModel GetDatabyID(string id)
+        public SachModel GetDatabyID(int id)
         {
             var kq= _res.GetDatabyID(id);
             kq.NXB = _res.GetNXBBYSACH(id);
@@ -41,7 +41,14 @@ namespace BLL
         }
         public List<SachModel> phantrang(int pageIndex, int pageSize, out long total)
         {
-            return _res.phantrang(pageIndex, pageSize, out total);
+
+            var kq= _res.phantrang(pageIndex, pageSize, out total);
+            foreach (var item in kq)
+            {
+                item.NXB = _res.GetNXBBYSACH(item.masach);
+                item.CD = _res.GetCDBYSACH(item.masach);
+            }
+            return kq;
         }
         public List<SachModel> GetDataByChuDe(string id)
         {

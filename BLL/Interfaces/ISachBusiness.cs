@@ -8,7 +8,7 @@ namespace BLL
     public partial interface ISachBusiness
     {
         bool Create(SachModel model);
-        SachModel GetDatabyID(string id);
+        SachModel GetDatabyID(int id);
         List<SachModel> GetDataAll();
         List<SachModel> GetDataByChuDe(string id);
         bool Update(SachModel model);
