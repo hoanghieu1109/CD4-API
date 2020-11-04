@@ -15,6 +15,6 @@ namespace DAL
         ChuDeModel GetCDBYSACH(int id);
         List<SachModel> GetDataAll();
         List<SachModel> GetDataByChuDe(string MaChuDe);
-        List<SachModel> phantrang(int pageIndex, int pageSize, out long total);
+        List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach, string giaban);
     }
 }

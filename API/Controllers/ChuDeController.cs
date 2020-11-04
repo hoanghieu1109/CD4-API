@@ -32,7 +32,7 @@ namespace API.Controllers
         public ChuDeModel CreateChuDe([FromBody] ChuDeModel model)
         {
             
-            model.machude = Guid.NewGuid().ToString();
+            
             _ChuDeBusiness.Create(model);
             return model;
         }
@@ -57,7 +57,7 @@ namespace API.Controllers
 
         [Route("get-by-id/{id}")]
         [HttpGet]
-        public ChuDeModel GetDatabyID(string id)
+        public ChuDeModel GetDatabyID(int id)
         {
             return _ChuDeBusiness.GetDatabyID(id);
         }

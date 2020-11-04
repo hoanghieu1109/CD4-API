@@ -21,7 +21,6 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_chude_create",
-                "@machude", model.machude,
                 "@tenchude", model.tenchude);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
@@ -73,7 +72,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public ChuDeModel GetDatabyID(string id)
+        public ChuDeModel GetDatabyID(int id)
         {
             string msgError = "";
             try

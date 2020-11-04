@@ -18,7 +18,7 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-        public ChuDeModel GetDatabyID(string id)
+        public ChuDeModel GetDatabyID(int id)
         {
             return _res.GetDatabyID(id);
         }

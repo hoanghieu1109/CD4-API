@@ -39,10 +39,10 @@ namespace BLL
         {
             return _res.GetDataAll();
         }
-        public List<SachModel> phantrang(int pageIndex, int pageSize, out long total)
+        public List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach, string giaban)
         {
 
-            var kq= _res.phantrang(pageIndex, pageSize, out total);
+            var kq= _res.phantrang(pageIndex, pageSize, out total, tensach, giaban);
             foreach (var item in kq)
             {
                 item.NXB = _res.GetNXBBYSACH(item.masach);
