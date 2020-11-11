@@ -10,13 +10,44 @@ namespace BLL
     public partial class HoaDonBusiness : IHoaDonBusiness
     {
         private IHoaDonRepository _res;
-        public HoaDonBusiness(IHoaDonRepository res)
+        private ISachBusiness _rsp;
+        public HoaDonBusiness(IHoaDonRepository res, ISachBusiness rsp)
         {
             _res = res;
+            _rsp = rsp;
         }
         public bool Create(HoaDonModel model)
         {
             return _res.Create(model);
+        }
+        public List<HoaDonModel> GetDataAll()
+        {
+            return _res.GetDataAll();
+        }
+
+        public HoaDonModel GetDatabyID(string id)
+        {
+            return _res.GetDatabyID(id);
+        }
+
+        public HoaDonModel GetChiTietByHoaDon(string id)
+        {
+            var kq = _res.GetDatabyID(id);
+
+            kq.listjson_chitiet = _res.GetChitietbyhoadon(id);
+            foreach (var item in kq.listjson_chitiet)
+            {
+                item.masach = _rsp.GetDatabyID(item.masach).masach;
+                //item.so_luong = _rsp.GetDatabyID(item.masach).so_luong.Value;
+            }
+
+            return kq;
+        }
+
+        public List<HoaDonModel> Search(int pageIndex, int pageSize, out long total, string ho_ten)
+        {
+            return _res.Search(pageIndex, pageSize, out total, ho_ten);
+
         }
     }
 

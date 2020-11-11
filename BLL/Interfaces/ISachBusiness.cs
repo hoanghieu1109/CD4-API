@@ -13,6 +13,6 @@ namespace BLL
         List<SachModel> GetDataByChuDe(string id);
         bool Update(SachModel model);
         bool Delete(string id);
-        List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach, string giaban);
+        List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach);
     }
 }

@@ -33,5 +33,52 @@ namespace API.Controllers
             _hoaDonBusiness.Create(model);
             return model;
         }
+        [Route("get-all")]
+        [HttpGet]
+        public IEnumerable<HoaDonModel> GetDatabAll()
+        {
+            return _hoaDonBusiness.GetDataAll();
+        }
+
+        [Route("get-by-id/{id}")]
+        [HttpGet]
+        public HoaDonModel GetDatabyID(string id)
+        {
+            return _hoaDonBusiness.GetDatabyID(id);
+        }
+
+        [Route("get-chi-tiet-by-hoa-don/{id}")]
+        [HttpGet]
+        public HoaDonModel GetCHitietByHoaDon(string id)
+        {
+            var kq = _hoaDonBusiness.GetChiTietByHoaDon(id);
+            return kq;
+        }
+
+        [Route("search")]
+        [HttpPost]
+        public ResponseModel Search([FromBody] Dictionary<string, object> formData)
+        {
+            var response = new ResponseModel();
+            try
+            {
+                var page = int.Parse(formData["page"].ToString());
+                var pageSize = int.Parse(formData["pageSize"].ToString());
+                string ho_ten = "";
+                if (formData.Keys.Contains("ho_ten") && !string.IsNullOrEmpty(Convert.ToString(formData["ho_ten"]))) { ho_ten = Convert.ToString(formData["ho_ten"]); }
+
+                long total = 0;
+                var data = _hoaDonBusiness.Search(page, pageSize, out total, ho_ten);
+                response.TotalSachs = total;
+                response.Data = data;
+                response.Page = page;
+                response.PageSize = pageSize;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            return response;
+        }
     }
 }

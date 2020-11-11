@@ -149,7 +149,7 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach, string giaban)
+        public List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach)
         {
             string msgError = "";
             total = 0;
@@ -158,8 +158,8 @@ namespace DAL
                 var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "phantrang",
                     "@page_index", pageIndex,
                     "@page_size", pageSize,
-                    "@tensach", tensach,
-                    "@giaban", giaban);
+                    "@tensach", tensach
+                    );
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];

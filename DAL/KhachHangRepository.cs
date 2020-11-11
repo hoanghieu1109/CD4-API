@@ -21,13 +21,8 @@ namespace DAL
             try
             {
                 var result = _dbHelper.ExecuteScalarSProcedureWithTransaction(out msgError, "sp_khachhang_create",
-                "@MaKH", model.MaKH,
-                "@HoTen", model.HoTen,
-                "@TaiKhoan",model.TaiKhoan,
-                "@MatKhau", model.MatKhau,
-                "@Email", model.Email,
-                "@DiaChi", model.DiaChi,
-                "@DienThoai", model.DienThoai);
+                "@customer_email", model.customer_email,
+                "@customer_password", model.customer_password);
                 if ((result != null && !string.IsNullOrEmpty(result.ToString())) || !string.IsNullOrEmpty(msgError))
                 {
                     throw new Exception(Convert.ToString(result) + msgError);

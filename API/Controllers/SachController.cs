@@ -131,10 +131,9 @@ namespace API.Controllers
                 var pageSize = int.Parse(formData["pageSize"].ToString());
                 string tensach = "";
                 if (formData.Keys.Contains("tensach") && !string.IsNullOrEmpty(Convert.ToString(formData["tensach"]))) { tensach = Convert.ToString(formData["tensach"]); }
-                string giaban = "";
-                if (formData.Keys.Contains("giaban") && !string.IsNullOrEmpty(Convert.ToString(formData["giaban"]))) { giaban = Convert.ToString(formData["giaban"]); }
+               
                 long total = 0;
-                var data = _SachBusiness.phantrang(page, pageSize, out total, tensach, giaban);
+                var data = _SachBusiness.phantrang(page, pageSize, out total, tensach);
                 response.TotalSachs = total;
                 response.Data = data;
                 response.Page = page;
