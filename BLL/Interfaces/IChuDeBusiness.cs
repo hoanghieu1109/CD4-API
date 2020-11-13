@@ -13,6 +13,6 @@ namespace BLL
         bool Update(ChuDeModel model);
         bool Delete(string id);
         ChuDeModel GetDatabyID(int id);
-        List<ChuDeModel> phantrang(int pageIndex, int pageSize, out long total);
+        List<ChuDeModel> phantrang(int pageIndex, int pageSize, out long total, string tenchude);
     }
 }

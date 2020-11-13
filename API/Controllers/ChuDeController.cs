@@ -61,7 +61,8 @@ namespace API.Controllers
         {
             return _ChuDeBusiness.GetDatabyID(id);
         }
-
+        [Route("search")]
+        [HttpPost]
         public ResponseModel phantrang([FromBody] Dictionary<string, object> formData)
         {
             var response = new ResponseModel();
@@ -69,9 +70,11 @@ namespace API.Controllers
             {
                 var page = int.Parse(formData["page"].ToString());
                 var pageSize = int.Parse(formData["pageSize"].ToString());
+                string tenchude = "";
+                if (formData.Keys.Contains("tenchude") && !string.IsNullOrEmpty(Convert.ToString(formData["tenchude"]))) { tenchude = Convert.ToString(formData["tenchude"]); }
 
                 long total = 0;
-                var data = _ChuDeBusiness.phantrang(page, pageSize, out total);
+                var data = _ChuDeBusiness.phantrang(page, pageSize, out total, tenchude);
                 response.TotalSachs = total;
                 response.Data = data;
                 response.Page = page;

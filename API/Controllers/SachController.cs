@@ -120,6 +120,13 @@ namespace API.Controllers
             return _SachBusiness.GetDataByChuDe(id);
         }
 
+        [Route("sp-get-by-nxb/{id}")]
+        [HttpGet]
+        public List<SachModel> GetDataByNXB(string id)
+        {
+            return _SachBusiness.GetDataByNXB(id);
+        }
+
         [Route("search")]
         [HttpPost]
         public ResponseModel phantrang([FromBody] Dictionary<string, object> formData)

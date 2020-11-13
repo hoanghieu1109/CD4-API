@@ -14,7 +14,8 @@ namespace DAL
         NhaXuatBanModel GetNXBBYSACH(int id);
         ChuDeModel GetCDBYSACH(int id);
         List<SachModel> GetDataAll();
-        List<SachModel> GetDataByChuDe(string MaChuDe);
+        List<SachModel> GetDataByChuDe(string machude);
+        List<SachModel> GetDataByNXB(string machude);
         List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach);
     }
 }

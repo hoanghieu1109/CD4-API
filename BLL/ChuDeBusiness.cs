@@ -34,9 +34,9 @@ namespace BLL
         {
             return _res.Update(model);
         }
-        public List<ChuDeModel> phantrang(int pageIndex, int pageSize, out long total)
+        public List<ChuDeModel> phantrang(int pageIndex, int pageSize, out long total, string tenchude)
         {
-            return _res.phantrang(pageIndex, pageSize, out total);
+            return _res.phantrang(pageIndex, pageSize, out total, tenchude);
         }
     }
 

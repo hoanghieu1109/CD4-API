@@ -32,7 +32,7 @@ namespace API.Controllers
             }
             _hoaDonBusiness.Create(model);
             return model;
-        }
+        }   
         [Route("get-all")]
         [HttpGet]
         public IEnumerable<HoaDonModel> GetDatabAll()

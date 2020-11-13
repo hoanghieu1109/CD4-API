@@ -103,15 +103,17 @@ namespace DAL
                 throw ex;
             }
         }
-        public List<ChuDeModel> phantrang(int pageIndex, int pageSize, out long total)
+        public List<ChuDeModel> phantrang(int pageIndex, int pageSize, out long total, string tenchude)
         {
             string msgError = "";
             total = 0;
             try
             {
-                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "phantrang",
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_chu_de_search",
                     "@page_index", pageIndex,
-                    "@page_size", pageSize);
+                    "@page_size", pageSize,
+                    "@tenchude", tenchude
+                    );
                 if (!string.IsNullOrEmpty(msgError))
                     throw new Exception(msgError);
                 if (dt.Rows.Count > 0) total = (long)dt.Rows[0]["RecordCount"];

@@ -11,6 +11,7 @@ namespace BLL
         SachModel GetDatabyID(int id);
         List<SachModel> GetDataAll();
         List<SachModel> GetDataByChuDe(string id);
+        List<SachModel> GetDataByNXB(string id);
         bool Update(SachModel model);
         bool Delete(string id);
         List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach);

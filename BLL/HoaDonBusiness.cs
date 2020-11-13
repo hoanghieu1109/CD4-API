@@ -22,24 +22,48 @@ namespace BLL
         }
         public List<HoaDonModel> GetDataAll()
         {
-            return _res.GetDataAll();
+            var kq = _res.GetDataAll();
+            foreach(var item in kq)
+            {
+                item.listjson_chitiet = _res.GetChitietbyhoadon(item.ma_hoa_don);
+                foreach (var ct in item.listjson_chitiet)
+                {
+
+                    ct.tensach = _rsp.GetDatabyID(ct.masach).tensach;
+                    ct.giaban = _rsp.GetDatabyID(ct.masach).giaban;
+                }
+
+            }
+            return kq;
+
         }
 
         public HoaDonModel GetDatabyID(string id)
         {
-            return _res.GetDatabyID(id);
+            var kq= _res.GetDatabyID(id);
+            kq.listjson_chitiet = _res.GetChitietbyhoadon(kq.ma_hoa_don);
+            foreach (var item in kq.listjson_chitiet)
+            {
+
+                item.tensach = _rsp.GetDatabyID(item.masach).tensach;
+                item.giaban = _rsp.GetDatabyID(item.masach).giaban;
+            }
+
+            return kq;
         }
 
         public HoaDonModel GetChiTietByHoaDon(string id)
         {
             var kq = _res.GetDatabyID(id);
 
-            kq.listjson_chitiet = _res.GetChitietbyhoadon(id);
+            kq.listjson_chitiet = _res.GetChitietbyhoadon(kq.ma_hoa_don);
             foreach (var item in kq.listjson_chitiet)
             {
-                item.masach = _rsp.GetDatabyID(item.masach).masach;
-                //item.so_luong = _rsp.GetDatabyID(item.masach).so_luong.Value;
+             
+                item.tensach = _rsp.GetDatabyID(item.masach).tensach;
+                item.giaban = _rsp.GetDatabyID(item.masach).giaban;
             }
+            
 
             return kq;
         }

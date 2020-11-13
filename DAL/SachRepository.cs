@@ -186,6 +186,22 @@ namespace DAL
                 throw ex;
             }
         }
-        
+
+        public List<SachModel> GetDataByNXB(string manxb)
+        {
+            string msgError = "";
+            try
+            {
+                var dt = _dbHelper.ExecuteSProcedureReturnDataTable(out msgError, "sp_get_by_nxb",
+                     "@manxb", manxb);
+                if (!string.IsNullOrEmpty(msgError))
+                    throw new Exception(msgError);
+                return dt.ConvertTo<SachModel>().ToList();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

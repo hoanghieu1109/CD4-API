@@ -29,8 +29,9 @@ namespace BLL
         public SachModel GetDatabyID(int id)
         {
             var kq= _res.GetDatabyID(id);
+            if (kq != null) { 
             kq.NXB = _res.GetNXBBYSACH(id);
-            kq.CD = _res.GetCDBYSACH(id);
+            kq.CD = _res.GetCDBYSACH(id);}
             return kq;
         }
 
@@ -53,6 +54,10 @@ namespace BLL
         public List<SachModel> GetDataByChuDe(string id)
         {
             return _res.GetDataByChuDe(id);
+        }
+        public List<SachModel> GetDataByNXB(string id)
+        {
+            return _res.GetDataByNXB(id);
         }
     }
 
