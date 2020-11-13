@@ -15,5 +15,7 @@ namespace BLL
         bool Update(SachModel model);
         bool Delete(string id);
         List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach);
+        List<SachModel> Gettuongtu(int masach);
+        List<SachModel> GetDataNew();
     }
 }

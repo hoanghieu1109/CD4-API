@@ -17,5 +17,7 @@ namespace DAL
         List<SachModel> GetDataByChuDe(string machude);
         List<SachModel> GetDataByNXB(string machude);
         List<SachModel> phantrang(int pageIndex, int pageSize, out long total, string tensach);
+        List<SachModel> Gettuongtu(int masach);
+        List<SachModel> GetDataNew();
     }
 }

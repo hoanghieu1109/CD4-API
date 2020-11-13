@@ -153,5 +153,18 @@ namespace API.Controllers
             return response;
         }
 
+        [Route("get-tuongtu/{id}")]
+        [HttpGet]
+        public IEnumerable<SachModel> Gettuongtu(int id)
+        {
+            return _SachBusiness.Gettuongtu(id);
+        }
+
+        [Route("get-new")]
+        [HttpGet]
+        public IEnumerable<SachModel> GetDataNew()
+        {
+            return _SachBusiness.GetDataNew();
+        }
     }
 }

@@ -59,6 +59,16 @@ namespace BLL
         {
             return _res.GetDataByNXB(id);
         }
+
+        public List<SachModel> Gettuongtu(int masach)
+        {
+            return _res.Gettuongtu(masach);
+        }
+
+        public List<SachModel> GetDataNew()
+        {
+            return _res.GetDataNew();
+        }
     }
 
 }
