@@ -7,9 +7,11 @@ namespace BLL
 {
     public partial interface INhaXuatBanBusiness
     {
-        //bool Create(ItemModel model);
-        //ItemModel GetDatabyID(string id);
         List<NhaXuatBanModel> GetDataAll();
-        //List<ItemModel> Search(int pageIndex, int pageSize, out long total, string item_group_id);
+        bool Create(NhaXuatBanModel model);
+        bool Update(NhaXuatBanModel model);
+        bool Delete(string id);
+        NhaXuatBanModel GetDatabyID(int id);
+        List<NhaXuatBanModel> phantrang(int pageIndex, int pageSize, out long total, string tennxb);
     }
 }

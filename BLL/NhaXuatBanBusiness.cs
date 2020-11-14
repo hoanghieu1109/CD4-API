@@ -14,22 +14,30 @@ namespace BLL
         {
             _res = NhaXuatBanGroupRes;
         }
-        //public bool Create(NhaXuatBanModel model)
-        //{
-        //    return _res.Create(model);
-        //}
-        //public NhaXuatBanModel GetDatabyID(string id)
-        //{
-        //    return _res.GetDatabyID(id);
-        //}
         public List<NhaXuatBanModel> GetDataAll()
         {
             return _res.GetDataAll();
         }
-        //public List<NhaXuatBanModel> Search(int pageIndex, int pageSize, out long total, string ChuDe_group_id)
-        //{
-        //    return _res.Search(pageIndex, pageSize, out total, ChuDe_group_id);
-        //}
+        public NhaXuatBanModel GetDatabyID(int id)
+        {
+            return _res.GetDatabyID(id);
+        }
+        public bool Create(NhaXuatBanModel model)
+        {
+            return _res.Create(model);
+        }
+        public bool Delete(string id)
+        {
+            return _res.Delete(id);
+        }
+        public bool Update(NhaXuatBanModel model)
+        {
+            return _res.Update(model);
+        }
+        public List<NhaXuatBanModel> phantrang(int pageIndex, int pageSize, out long total, string tennxb)
+        {
+            return _res.phantrang(pageIndex, pageSize, out total, tennxb);
+        }
     }
 
 }
